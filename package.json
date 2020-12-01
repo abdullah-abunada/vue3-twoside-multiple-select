@@ -1,0 +1,37 @@
+{
+  "name": "vue-twoside-multiple-select",
+  "description": "MultiSelect with two lists for Vue.js",
+  "version": "0.0.1",
+  "author": "Jaeyong.Jang <jang8584@gmail.com>",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve src/main.js",
+    "build": "vue-cli-service build"
+  },
+  "keywords": [
+    "javascript",
+    "vue",
+    "multi-select",
+    "select",
+    "vue-multi-select",
+    "vue-multiple-select",
+    "vue-twoside-select"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.16",
+    "vue": "^2.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jangjaeyong/vue-twoside-multiple-select.git"
+  }
+}
