@@ -2,6 +2,7 @@
   "name": "vue-twoside-multiple-select",
   "description": "MultiSelect with two lists for Vue.js",
   "version": "0.0.1",
+  "license": "MIT",
   "author": "Jaeyong.Jang <jang8584@gmail.com>",
   "main": "src/index.js",
   "scripts": {
@@ -13,10 +14,16 @@
     "javascript",
     "vue",
     "multi-select",
+    "multi select",
+    "multiple-select",
+    "multiple select",
     "select",
     "vue-multi-select",
+    "vue multi select",
     "vue-multiple-select",
-    "vue-twoside-select"
+    "vue multiple select",
+    "vue-twoside-select",
+    "vue twoside select"
   ],
   "dependencies": {
     "bootstrap": "^4.3.1",

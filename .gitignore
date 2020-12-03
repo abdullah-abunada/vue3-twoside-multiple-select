@@ -1,6 +1,5 @@
 node_modules/
 npm-debug.log
-!example/dist
 package-lock.json
 .idea/
 vue-twoside-multiple-select.iml
