@@ -2,6 +2,9 @@
 
 A MultiSelect with two lists for Vue.js, searchable, sorting and action buttons.
 
+enable group list move and remove
+
+![capture1](https://user-images.githubusercontent.com/17465497/102037021-84e18f00-3e07-11eb-972e-7196e019ffd5.JPG)
 ## Install npm
 
 ```bash
