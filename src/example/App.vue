@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Vue Twoside Multiple Select</h1>
-    <button type="button" @click="resetItems()">Reset Items</button><br><br>
+<!--    <button type="button" @click="resetItems()">Reset Items</button><br><br>-->
 
     <multiple-select
         v-if="toggle"
@@ -15,7 +15,6 @@
         :orderBy="'name'"
         text-field="name"
         value-field="id2"
-        category-field="category"
         v-on:selectedListModified="testEvent"
     ></multiple-select>
   </div>
