@@ -39,7 +39,8 @@ export default {
             },
             {
               id2: 23,
-              name: 'Bitcoin3'
+              name: 'Bitcoin3',
+              disabled: true
             },
             {
               id2: 24,

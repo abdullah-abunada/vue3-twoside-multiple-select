@@ -1,7 +1,7 @@
 {
   "name": "vue3-two-side-multiple-select",
   "description": "MultiSelect with two lists for Vue3.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Abdullah.Abunada <eng.a.abunada@gmail.com>",
   "main": "src/index.js",

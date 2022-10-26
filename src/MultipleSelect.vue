@@ -565,6 +565,7 @@ export default {
 <style scoped>
 ul{
   list-style-type: none;
+  border-radius: 4px;
   padding: 0;
   height: 270px;
   overflow: auto;
@@ -597,9 +598,13 @@ ul li{
 }
 .ul-disabled {
   background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 2px;
 }
 .li-disabled {
   background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 2px;
 }
 .list-hover:hover{
   background: #04d69eff;
@@ -624,7 +629,7 @@ ul li{
   flex-direction: column;
   justify-content: center;
   color: #41b983ff;
-  width: 50px;
+  width: 25px;
 }
 /* Responsive */
 @media (max-width: 768px)
