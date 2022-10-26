@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <h1>Vue Twoside Multiple Select</h1>
-<!--    <button type="button" @click="resetItems()">Reset Items</button><br><br>-->
-
+    <h1>Vue3 Two-side Multiple Select</h1>
     <multiple-select
         v-if="toggle"
         :items="cryptocurrencies"

@@ -1,46 +1,49 @@
-# vue-twoside-multiple-select
+# vue3-two-side-multiple-select
 
-A MultiSelect with two lists for Vue.js, searchable, sorting and action buttons.
+A MultiSelect with two lists for Vue.js v.3, searchable, sorting and action buttons.
 
 enable group list move and remove
 
-![capture1](https://user-images.githubusercontent.com/17465497/102037021-84e18f00-3e07-11eb-972e-7196e019ffd5.JPG)
+![capture1](./public/example.png)
 ## Install npm
 
 ```bash
-npm install vue-twoside-multiple-select --save
+npm install vue3-two-side-multiple-select --save
 ```
 
 ## Import and use
 
 Import for global usage
 ```javascript
-import Vue from 'vue'
-import TwosideSelect from 'vue-twoside-multiple-select'
+import { createApp } from 'Vue'
+import MultipleSelect from 'vue3-two-side-multiple-select'
+import App from "./App"
 
-Vue.use(TwosideSelect)
+const app = createApp(App)
+app.component('multiple-select', MultipleSelect)
+app.mount('#app')
 ...
 ```
 Or on a single component
 ```javascript
-import TwosideSelect from 'vue-twoside-multiple-select'
+import MultipleSelect from 'vue3-two-side-multiple-select'
 ...
 },
-components: { TwosideSelect }
+components: { MultipleSelect }
 ...
 ```
 
 ## Props
 
-| Name                    | Type             | Default         | Description                                                              |
-|-------------------------|------------------|-----------------|--------------------------------------------------------------------------|
-| items                    | Array           | | Array of items to select                                               |
-| selectedItems           | Array |              | Array of selected items  |
-| valueField           | String | value             | Value field |
-| textField           | String | text             | Text field |
-| childField           | String | children             | Text field |
-| showField           | String | disabled             | Text field |
-| searchable           | Boolean | false             | If enabled, it will display search fields for lists. |
+| Name                  | Type             | Default         | Description                                                              |
+|-----------------------|------------------|-----------------|--------------------------------------------------------------------------|
+| items                  | Array           | | Array of items to select                                               |
+| selectedItems         | Array |              | Array of selected items  |
+| valueField         | String | value             | Value field |
+| textField          | String | text             | Text field |
+| childField         | String | children            | Text field |
+| showField          | String | disabled            | Text field |
+| searchable         | Boolean | false             | If enabled, it will display search fields for lists. |
 | searchablePlaceholder | String | Search | Placeholder of inputs search
 | sorteable | Boolean | false | Sort array by property name
 | orderBy | String | id | Property name to sort
@@ -48,6 +51,7 @@ components: { TwosideSelect }
 | textSelectedItems | Object | {one: 'selected item', greaterThanOne: 'selected items'} | Counter text that is below the right list
 | limitSelectedItems | Number | 999 | Limit items that the user can select
 | disabled           | Boolean | false             | Disable select |
+| frontEnd           | String  | bootsrap          | bootsrap, bulma|
 
 ## Events
 
@@ -64,10 +68,9 @@ components: { TwosideSelect }
 After you have installed the package and imported it, call the component's html and pass its properties.
 
 ```html
-<twoside-select
+<multiple-select
   :items="arrayOfItems"
   :selectedItems="arrayOfSelectedtems"
-  :limitSelectedItems="10"
   :searchable="true"
   :disabled="false"
   :sorteable="true"
@@ -76,7 +79,7 @@ After you have installed the package and imported it, call the component's html 
   :limitSelectedItems="999"
   text-field="name"
   value-field="id"
-  ></twoside-select>
+  ></multiple-select>
 ```
 ```javascript
 arrayOfItems: [
@@ -117,7 +120,10 @@ arrayOfItems: [
         name: 'Ripple'
     }
 ```
-
+Rtl is available when the body has the class is-rtl
+```html
+<body class="is-rtl"></body>
+```
 ## Contributing
 
 To contribute to this project you can clone the repository and run the npm run dev command to test.

@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-    <div class="col-md-5">
+  <div :class="{ 'row': frontEnd === 'bootstrap', 'columns': frontEnd === 'bulma' }">
+    <div :class="{ 'col-md-5': frontEnd === 'bootstrap', 'column is-5': frontEnd === 'bulma' }">
       <div class="left-select">
         <input
             :disabled="disabled"
@@ -35,10 +35,10 @@
     </div>
 
     <div class="switch">
-      <img src="../public/switch.png" alt="Switch">
+      <img src="../public/switch.svg" alt="Switch">
     </div>
 
-    <div class="col-md-5">
+    <div :class="{ 'col-md-5': frontEnd === 'bootstrap', 'column is-5': frontEnd === 'bulma' }">
       <div class="right-select">
         <input
             :disabled="disabled"
@@ -145,6 +145,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    frontEnd: {
+      type: String,
+      default: 'bootstrap'
+    },
   },
   data() {
     return {
@@ -157,12 +161,12 @@ export default {
     }
   },
   created(){
-    var self = this;
+    let self = this;
     if(this.selectedItems){
       this.selectedItems.forEach(function(selectedItem, index){
         if(selectedItem[self.childField]){
           let selectedItemChild = selectedItem[self.childField];
-          for(var i=0;i<selectedItemChild.length;i++){
+          for(let i=0;i<selectedItemChild.length;i++){
             let pos = self.findChildWithAttr(self.list.left, self.valueField, selectedItem[self.valueField], selectedItemChild[i][self.valueField]);
             if(pos >= 0){
               self.list.left.forEach(function(leftItem,index){
@@ -192,8 +196,8 @@ export default {
   },
   methods: {
     leftCount() {
-      var self = this;
-      var result = this.list.left.length
+      let self = this;
+      let result = this.list.left.length
       this.list.left.forEach(function(item){
         if(item[self.childField]){
           result+=item[self.childField].length
@@ -202,8 +206,8 @@ export default {
       return result
     },
     rightCount() {
-      var self = this;
-      var result = this.list.right.length
+      let self = this;
+      let result = this.list.right.length
       this.list.right.forEach(function(item){
         if(item[self.childField]){
           result+=item[self.childField].length
@@ -212,7 +216,7 @@ export default {
       return result
     },
     addGroupItem(item, index) {
-      var self = this;
+      let self = this;
       if(this.disabled) {
         return false
       }
@@ -226,7 +230,7 @@ export default {
         return false;
       }
 
-      var existChk = false;
+      let existChk = false;
       this.list.right.forEach(function(rightItem){
         if(item[self.valueField] == rightItem[self.valueField]){
           item[self.childField].forEach(function(childItem){
@@ -249,7 +253,7 @@ export default {
       this.$emit('selectedListModified', this.list.right)
     },
     addChildItem(parentItem, parentIndex, item, index) {
-      var self = this;
+      let self = this;
       if(this.disabled) {
         return false
       }
@@ -262,7 +266,7 @@ export default {
       if(totalItems >= this.limitSelectedItems){
         return false;
       }
-      var existChk = false;
+      let existChk = false;
       this.list.right.some(function(rightItem){
         if(parentItem[self.valueField] == rightItem[self.valueField]){
           rightItem[self.childField].push(item)
@@ -274,12 +278,12 @@ export default {
 
       if(!existChk) {
         // 따로 만들어서 push 해야함 -- 다시 확인해야함
-        var parentArray = this.deepClone(parentItem)
+        let parentArray = this.deepClone(parentItem)
 
         this.list.right.push(parentArray);
         this.list.right.some(function(rightItem){
           if(parentItem[self.valueField] == rightItem[self.valueField]){
-            var itemArray = new Array()
+            let itemArray = new Array()
             itemArray[0]=item
             rightItem[self.childField] = itemArray
           }
@@ -318,7 +322,7 @@ export default {
       this.$emit('selectedListModified', this.list.right)
     },
     removeGroupItem(item, index) {
-      var self = this;
+      let self = this;
       if(this.disabled) {
         return false
       }
@@ -327,7 +331,7 @@ export default {
         return false
       }
 
-      var existChk = false;
+      let existChk = false;
       this.list.left.forEach(function(leftItem){
         if(item[self.valueField] == leftItem[self.valueField]){
           item[self.childField].forEach(function(childItem){
@@ -352,7 +356,7 @@ export default {
       this.$emit('selectedListModified', this.list.right)
     },
     removeChildItem(parentItem, parentIndex, item, index) {
-      var self = this;
+      let self = this;
       if(this.disabled) {
         return false
       }
@@ -360,7 +364,7 @@ export default {
       if(item.disabled) {
         return false
       }
-      var existChk = false;
+      let existChk = false;
       this.list.left.some(function(leftItem){
         if(parentItem[self.valueField] == leftItem[self.valueField]){
           leftItem[self.childField].push(item)
@@ -372,12 +376,12 @@ export default {
 
       if(!existChk) {
         // 따로 만들어서 push 해야함 -- 다시 확인해야함
-        var parentArray = this.deepClone(parentItem)
+        let parentArray = this.deepClone(parentItem)
 
         this.list.left.push(parentArray);
         this.list.left.some(function(leftItem){
           if(parentItem[self.valueField] == leftItem[self.valueField]){
-            var itemArray = new Array()
+            let itemArray = new Array()
             itemArray[0]=item
             leftItem[self.childField] = itemArray
           }
@@ -398,7 +402,7 @@ export default {
       this.$emit('selectedListModified', this.list.right)
     },
     removeItem(item, index){
-      var self = this;
+      let self = this;
       if(this.disabled) {
         return false
       }
@@ -417,12 +421,12 @@ export default {
       this.$emit('selectedListModified', this.list.right)
     },
     search(text, position){
-      var self = this;
+      let self = this;
       this.list[position] = (position == 'left') ? this.getUnselectedItems() : this.getSelectedItems();
-      var originalArray = this.deepClone(this.list[position])
+      let originalArray = this.deepClone(this.list[position])
 
       if(text){
-        var childChk=false
+        let childChk=false
         this.list[position] = this.list[position].filter(function(result){
           if(result[self.childField]){
             // child exact matching...fail..검색 후 자꾸 좌우로 옮기고 나서, 리스트가 이상해진다.
@@ -446,7 +450,7 @@ export default {
       }
     },
     getUnselectedItems() {
-      var self = this;
+      let self = this;
       let data = this.items;
       let selectedItems = this.selectedItems;
       data.forEach(function(leftItem, index){
@@ -469,7 +473,7 @@ export default {
       return this.items;
     },
     getSelectedItems() {
-      var self = this;
+      let self = this;
       let items = this.items;
       let selectedItems = this.selectedItems;
       selectedItems.forEach(function(selectedItem, index){
@@ -493,7 +497,7 @@ export default {
       return selectedItems;
     },
     findWithAttr(array, attr, value) {
-      for (var i = 0; i < array.length; i++) {
+      for (let i = 0; i < array.length; i++) {
         if (array[i][attr] === value) {
           return i
         }
@@ -501,13 +505,13 @@ export default {
       return -1
     },
     findChildWithAttr(array, attr, value, childValue) {
-      var self = this;
-      for (var i = 0; i < array.length; i++) {
+      let self = this;
+      for (let i = 0; i < array.length; i++) {
         if(array[i][attr] == value){
           if(array[i][self.childField]){
             let arrayChild = array[i][self.childField];
 
-            for(var j=0; j < arrayChild.length; j++){
+            for(let j=0; j < arrayChild.length; j++){
               if (arrayChild[j][attr] === childValue) {
                 return j
               }
@@ -581,13 +585,15 @@ ul li{
   margin: -8px;
 }
 .li-category-grp {
-  background: #578EBE;
+  background: #41b983ff;
   border-radius: 4px;
   border: none;
+  color: #fff;
 }
 .li-category-list {
   padding-left: 20px !important;
   border: none;
+  transition: transform 250ms;
 }
 .ul-disabled {
   background-color: #f5f5f5;
@@ -596,9 +602,13 @@ ul li{
   background-color: #f5f5f5;
 }
 .list-hover:hover{
-  background: #09f;
+  background: #04d69eff;
   cursor: pointer;
   color: #fff;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  transform: translateY(2px);
+  transition: transform 250ms;
 }
 .searchable{
   border: 1px solid #ddd;
@@ -613,6 +623,8 @@ ul li{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #41b983ff;
+  width: 50px;
 }
 /* Responsive */
 @media (max-width: 768px)
@@ -622,5 +634,10 @@ ul li{
     margin: 0 auto;
     padding: 15px 0;
   }
+}
+/* rtl style*/
+body.is-rtl .li-category-list {
+  padding-left: unset !important;
+  padding-right: 20px !important;;
 }
 </style>
