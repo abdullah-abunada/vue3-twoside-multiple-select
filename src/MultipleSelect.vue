@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'row': frontEnd === 'bootstrap', 'columns': frontEnd === 'bulma' }">
+  <div :class="{ 'row': frontEnd === 'bootstrap', 'columns is-centered': frontEnd === 'bulma' }">
     <div :class="{ 'col-md-5': frontEnd === 'bootstrap', 'column is-5': frontEnd === 'bulma' }">
       <div class="left-select">
         <input
